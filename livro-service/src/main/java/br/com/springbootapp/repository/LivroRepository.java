@@ -44,8 +44,6 @@ public class LivroRepository {
     public Livro create(final Livro livro){
         final String sql = "insert into livros(name,autor) values(?,?)";
 
-        long t = jdbcTemplate.update(sql, new Object[]{livro.getNome(), livro.getAutor()});
-
         KeyHolder holder = new GeneratedKeyHolder();
         jdbcTemplate.update(getPreparedStatementCreateLivro(livro, sql), holder);
 
